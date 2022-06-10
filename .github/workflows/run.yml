@@ -25,3 +25,5 @@ jobs:
         git diff
         git add -A && git commit -m ":memo: UPDATE" || exit 0
         git push
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
