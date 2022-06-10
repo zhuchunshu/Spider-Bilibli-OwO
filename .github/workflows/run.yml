@@ -1,10 +1,10 @@
-name: Pull
+name: Update enent
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  watch:
+    types: started
+  schedule:
+    - cron:  '0 0 */1 * *'
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
       run: php index.php
     - name: Commit and push
       run: |-
-        git config --global user.email "zhuchunshu@dog87.com" && git config --global user.name "zhuchunshu"
+        git config --global user.email "bot@github.com" && git config --global user.name "Bot"
         git diff
         git add -A && git commit -m ":memo: UPDATE" || exit 0
     - name: Push changes
