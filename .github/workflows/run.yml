@@ -17,8 +17,6 @@ jobs:
       with:
         php-version: '8.0'
     - uses: actions/checkout@v2
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Running
       run: php index.php
     - name: Commit and push
@@ -26,4 +24,8 @@ jobs:
         git config --global user.email "zhuchunshu@dog87.com" && git config --global user.name "zhuchunshu"
         git diff
         git add -A && git commit -m ":memo: UPDATE" || exit 0
-        git push
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
