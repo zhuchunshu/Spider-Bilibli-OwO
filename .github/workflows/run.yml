@@ -22,6 +22,12 @@ jobs:
 
     - name: Running
       run: php index.php
+    - name: Commit and push
+      run: |-
+        git config --global user.email "bot@github.com" && git config --global user.name "Bot"
+        git diff
+        git add . && git commit -m ":memo: UPDATE" || exit 0
+        git push
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
