@@ -19,6 +19,9 @@ jobs:
       with:
         php-version: '8.0'
     - uses: actions/checkout@v3
+    - uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Running
       run: php index.php
     - name: Commit and push
